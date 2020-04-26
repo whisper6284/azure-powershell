@@ -60,7 +60,12 @@ directive:
       subject: Job
     set:
       subject: ImportExport
-#   - where:
-#       variant: ^CreateExpanded$|^CreateViaIdentityExpanded$
-#     remove: true
+  - where:
+      subject: Location
+    set:
+      subject: ImportExportLocation
+  - where:
+      subject: BitLockerKey
+    set:
+      subject: ImportExportBitLockerKey
 ```
