@@ -1,58 +1,62 @@
 ---
 external help file:
 Module Name: Az.MariaDb
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbfirewallrule
+online version: https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbvirtualnetworkrule
 schema: 2.0.0
 ---
 
-# Get-AzMariaDbFirewallRule
+# Get-AzMariaDbVirtualNetworkRule
 
 ## SYNOPSIS
-Gets information about a server firewall rule.
+Gets a virtual network rule.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzMariaDbFirewallRule -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMariaDbVirtualNetworkRule -ResourceGroupName <String> -ServerName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMariaDbFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMariaDbVirtualNetworkRule -Name <String> -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzMariaDbFirewallRule -InputObject <IMariaDbIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMariaDbVirtualNetworkRule -InputObject <IMariaDbIdentity> [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets information about a server firewall rule.
+Gets a virtual network rule.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### Example 1: List all virtual network rule under a MariaDB
 ```powershell
-Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
+PS C:\> Get-AzMariaDbVirtualNetworkRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn
+
+Name            Type
+----            ----
+vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
+vnetrule-Adsefc Microsoft.DBforMariaDB/servers/virtualNetworkRules
 ```
 
-Name       Type
-----       ----
-fr-cfgl3y  Microsoft.DBforMariaDB/servers/firewallRules
-fr-usc9na  Microsoft.DBforMariaDB/servers/firewallRules
-frname-001 Microsoft.DBforMariaDB/servers/firewallRules
+This command lists all virtual network rule under a MariaDB.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### Example 2: Get virtual network rule under a MariaDB
 ```powershell
-Get-AzMariaDbFirewallRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig -Name frname-001
+PS C:\> Get-AzMariaDbVirtualNetworkRule -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-9pebvn -Name vnetrule-QdMJpU
+
+Name            Type
+----            ----
+vnetrule-QdMJpU Microsoft.DBforMariaDB/servers/virtualNetworkRules
 ```
 
-Name       Type
-----       ----
-frname-001 Microsoft.DBforMariaDB/servers/firewallRules
+This command gets virtual network rule under a MariaDB.
 
 ## PARAMETERS
 
@@ -69,7 +73,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -InputObject
@@ -86,23 +89,36 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -Name
-The name of the server firewall rule.
+The name of the virtual network rule.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: FirewallRuleName
+Aliases: VirtualNetworkRuleName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
@@ -119,7 +135,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -ServerName
@@ -135,7 +150,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### -SubscriptionId
@@ -151,7 +165,6 @@ Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
-Dynamic: False
 ```
 
 ### CommonParameters
@@ -163,16 +176,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
-
-## ALIASES
+### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IVirtualNetworkRule
 
 ## NOTES
 
-### COMPLEX PARAMETER PROPERTIES
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-#### INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+
+INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
