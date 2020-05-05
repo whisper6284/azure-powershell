@@ -34,6 +34,9 @@
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
     - `New-AzVirtualWan`
     - `Update-AzVirtualWan`
+* Add `DNSEnableProxy`, 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to `AzureFirewall`
+    - Updated cmdlet:
+        - New-AzFirewall
 
 ## Version 2.5.0
 * Updated cmdlets to enable connection on private IP for Virtual Network Gateway.
