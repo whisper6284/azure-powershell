@@ -31,10 +31,14 @@
         - Set-AzSecurityPartnerProvider
 * Added `RequiredZoneNames` on `PSPrivateLinkResource` and `GroupId` on `PSPrivateEndpointConnection`
 * Fixed incorrect type of SuccessThresholdRoundTripTimeMs parameter for New-AzNetworkWatcherConnectionMonitorTestConfigurationObject
+<<<<<<< HEAD
 * Updated VirtualWan cmdlets to set default value of AllowVnetToVnetTraffic argument to True.
     - `New-AzVirtualWan`
     - `Update-AzVirtualWan`
 * Add `DNSEnableProxy`, 'DNSRequireProxyForNetworkRules' and 'DNSServers' parameters to `AzureFirewall`
+=======
+* Add `EnableDnsProxy`, 'DisableDnsProxyForNetworkRule' and 'DnsServer' parameters to `AzureFirewall`
+>>>>>>> Changes based on PR comments
     - Updated cmdlet:
         - New-AzFirewall
 
